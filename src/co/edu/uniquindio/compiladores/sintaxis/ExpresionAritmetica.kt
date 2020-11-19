@@ -1,6 +1,7 @@
 package co.edu.uniquindio.compiladores.sintaxis
 
 import co.edu.uniquindio.compiladores.lexico.Token
+import javafx.scene.control.TreeItem
 
 class ExpresionAritmetica():Expresion() {
     var expresion1:ExpresionAritmetica? = null
@@ -23,6 +24,11 @@ class ExpresionAritmetica():Expresion() {
     }
     constructor(valorNumerico: ValorNumerico):this(){
         this.valorNumerico = valorNumerico
+    }
+
+    fun getArbolVisual(): TreeItem<String> {
+        var raiz = TreeItem<String>("Expresion Aritmetica")
+        return  raiz
     }
 
 }

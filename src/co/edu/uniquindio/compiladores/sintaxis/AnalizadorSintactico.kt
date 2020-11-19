@@ -52,12 +52,11 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
     fun esDesicion(): Decision? {
         if (tokenActual.categoria == Categoria.PALABRA_RESERVADA && tokenActual.lexema == "se") {
             obtenerSiguienteToken()
-            val expresion = esExpresionLogica()
+            val expresion = esExpresion()
             if (expresion != null) {
                 obtenerSiguienteToken()
                 val listaSentencias = esBloqueSentencias()
                 if (listaSentencias != null) {
-                    obtenerSiguienteToken()
                     if (tokenActual.categoria == Categoria.PALABRA_RESERVADA && tokenActual.lexema == "altro") {
                         obtenerSiguienteToken()
                         val listaSentenciasAltro = esBloqueSentencias()
@@ -398,6 +397,7 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
         var exp1= esExpresionAritmetica()
         if(exp1 != null){
             obtenerSiguienteToken()
+            print(tokenActual.lexema)
             if(tokenActual.categoria == Categoria.OPERADORES_RELACIONALES){
                 val operadorRelacional = tokenActual
                 obtenerSiguienteToken()
